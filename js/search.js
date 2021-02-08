@@ -9,10 +9,28 @@ function filterByTitle(title) {
   })
 }
 
+function findById(id) {
+  return movies.find((movie) => {
+    return movie.id === parseInt(id, 10)
+  })
+}
+
 $search.addEventListener('submit', function (event) {
   event.preventDefault()
   const formData = new FormData(this)
-  const title = formData.get('title')
-  const movies = filterByTitle(title)
-  render(movies)
+  const query = formData.get('query')
+  const movies = searchMovie(query)
+  console.log(movies)
+  if (movies) {
+    return render(movies)
+  }
+
+  return alert('No encontramos tu película')
 })
+
+function searchMovie(query) {
+  if (isNaN(query)) {
+    return filterByTitle(query)
+  }
+  return [findById(query)]
+}
