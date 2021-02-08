@@ -15,22 +15,21 @@ function findById(id) {
   })
 }
 
-$search.addEventListener('submit', function (event) {
-  event.preventDefault()
-  const formData = new FormData(this)
-  const query = formData.get('query')
-  const movies = searchMovie(query)
-  console.log(movies)
-  if (movies) {
-    return render(movies)
-  }
-
-  return alert('No encontramos tu película')
-})
-
 function searchMovie(query) {
   if (isNaN(query)) {
     return filterByTitle(query)
   }
   return [findById(query)]
 }
+
+$search.addEventListener('submit', function (event) {
+  event.preventDefault()
+  const formData = new FormData(this)
+  const query = formData.get('query')
+  const movies = searchMovie(query)
+  if (movies) {
+    return render(movies)
+  }
+
+  return alert('No encontramos tu película')
+})
