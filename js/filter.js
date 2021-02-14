@@ -4,7 +4,7 @@ import {
   movieList,
   allMovies,
   popular as mostValued,
-  notPopular as leastValue
+  notPopular as leastValued
 } from './normalize.js'
 
 filter.addEventListener('change', function() {
@@ -12,7 +12,7 @@ filter.addEventListener('change', function() {
     case 'most-valued':
       return renderMovieListFromMap(mostValued, movieList)
     case 'least-valued':
-      return renderMovieListFromMap(leastValue, movieList)
+      return renderMovieListFromMap(leastValued, movieList)
     default:
       return renderMovieListFromMap(allMovies, movieList)
   }
