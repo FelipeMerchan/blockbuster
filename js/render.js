@@ -1,3 +1,8 @@
+export function renderMovieListFromMap(list, map) {
+  cleanMovieList()
+  list.forEach(movieId => renderElement(map.get(movieId)))
+}
+
 function buildElement({ title, poster_path, vote_average, id, recommended }) {
   const template = `
     <article class="movie ${recommended ? 'recommended' : ''}">
